@@ -62,7 +62,7 @@ public class LogAnalyzer {
                 }
             }
         } catch (IOException x) {
-            System.err.format("Could not read file: %s", file.toString());
+            System.err.format("Could not read file: %s\n", file.toString());
         }
 
         for (Map.Entry<String, ServiceStats> entry : stats.entrySet()) {

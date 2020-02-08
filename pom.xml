@@ -7,14 +7,37 @@
   <groupId>com.mvelyka</groupId>
   <artifactId>elinvar-case-study</artifactId>
   <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+    <java.version>8</java.version>
+  </properties>
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>${dockerfile-maven-version}</version>
+        <executions>
+          <execution>
+            <id>default</id>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <repository>mvelyka/elinvar-case-study</repository>
+          <tag>${project.version}</tag>
         </configuration>
       </plugin>
     </plugins>
